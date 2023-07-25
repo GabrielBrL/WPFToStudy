@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BasicWpf"
         mc:Ignorable="d" FontFamily="Global User Interface" FontSize="18"
-        Title="Basic WPF" Height="450" Width="800">
+        Title="Basic WPF" Height="450" Width="800" x:Name="mainWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -29,7 +29,18 @@
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Basic WPF" Margin="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontSize="26"/>
         <TextBlock Grid.Column="1" Grid.Row="2" Text="First Name" Margin="20,0" FontWeight="SemiBold"/>
         <TextBox x:Name="txtFirstName" Grid.Column="2" Grid.Row="2" Width="250" Height="auto"/>
-        <Button x:Name="btnSubmit" Content="Run me" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Grid.Row="3"
-                Click="btnSubmit_Click"/>
+        <ComboBox x:Name="cbItems" Grid.Column="2" Margin="0,5" Grid.Row="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image HorizontalAlignment="Center" Margin="0" Width="20" Height="20" Source="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg"/>
+                        <TextBlock Text="{Binding FullName}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <!--<Image Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" HorizontalAlignment="Center" Margin="0" Width="auto" Source="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg"/>-->
+        <!--<MediaElement Grid.Row="5" Grid.Column="5" Grid.RowSpan="2" Source="https://media0.giphy.com/media/3ov9jWu7BuHufyLs7m/giphy.gif"/>-->
+        <Button x:Name="btnSubmit" Content="Run me" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Grid.Row="4" Click="btnSubmit_Click"/>
     </Grid>
 </Window>

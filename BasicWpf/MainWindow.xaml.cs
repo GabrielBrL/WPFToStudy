@@ -20,14 +20,26 @@ namespace BasicWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Person> people = new List<Person>();
         public MainWindow()
         {
             InitializeComponent();
+            people.Add(new Person { FirstName = "Gabriel", LastName = "Barros"});
+            people.Add(new Person { FirstName = "Kauani", LastName = "Dias"});
+
+            cbItems.ItemsSource = people;
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Click", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            MessageBox.Show($"{txtFirstName.Text} was saved.", $"{mainWindow.Title}", MessageBoxButton.OKCancel, MessageBoxImage.Information);
         }
+    }
+
+    public class Person
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
     }
 }
